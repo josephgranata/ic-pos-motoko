@@ -1,6 +1,6 @@
 ![](./media/header.png)
 
-# IC-POS
+# IC-POS / with Small Readme Updates by Joseph Hurtado
 
 IC-POS is an experimental app to demonstrate a real world use case for [ckBTC](https://internetcomputer.org/ckbtc/) on the Internet Computer. It is a simple Point of Sale app that allows users to accept ckBTC payments.
 
@@ -66,6 +66,8 @@ dfx start --clean --background
 
 Integration with the [Internet Identity](https://internetcomputer.org/internet-identity/) allows store owners to securely setup and manage their store. The Internet Identity canister is already deployed on the IC mainnet. For local development, you need to deploy it to your local instance of the IC.
 
+_Go to the directory where this files are located, where dfx.json is located and run this:_
+
 ```bash
 dfx deploy --network local internet_identity
 ```
@@ -73,6 +75,10 @@ dfx deploy --network local internet_identity
 ### Step 3: Save current principal as a variable
 
 The principal will be used when deploying the ledger canister.
+
+_- The command in parentheses below outputs your principal ID or local internet identity._
+_- You can verify that OWNER contains your principal ID by typing set in your Terminal, and lookinf for the variable in the list of outputs._
+_- I got this principal address: 3ionl-6zbnv-5djma-z7d65-ia5cv-3ca3g-i7dwa-o3ua6-gjgzu-ruyn4-qqe_
 
 ```bash
 export OWNER=$(dfx identity get-principal)
@@ -147,9 +153,18 @@ dfx deploy --network local icpos --argument '(0)'
 
 ic-pos uses [Courier](https://courier.com/) to send email and SMS notifications. If you want to enable notifications, you need to sign up for a Courier account and and create and API key. Then issue the following command:
 
+#### Step 6.1 Joseph Hurtado
+I signed up for Courier, and got their production API key for free up to 10,000 messages.
+I used the Gmail account from satoshinotesbtc@gmail.com to do it, and connected it fully. 
+It worked.
+
+Here is the key: YzVjNDA2NTYtZDgwZi00MDA3LTlhMjEtMWU5YzY4MDYzZTk2
+
 ```bash
 dfx canister --network local call icpos setCourierApiKey "pk_prod_..."
 ```
+dfx canister --network local call icpos setCourierApiKey "YzVjNDA2NTYtZDgwZi00MDA3LTlhMjEtMWU5YzY4MDYzZTk2"
+
 
 ### Step 7: Build and run the frontend
 
@@ -159,6 +174,9 @@ Run npm to install dependencies and start the frontend. The frontend will be ava
 npm install
 npm run dev
 ```
+
+#### Step 7.1 I got an error, but it compiled, Internet Identity Related
+Principal 10000 was created with Internet Identity, with key 111111.
 
 Why don't we deploy the frontend as a local canister? Vite uses lazy loading of modules. This does not work when deploying to a local canister. When deploying to the IC mainnet, this is not an issue. Also, running using `npm run dev` allows for hot reloading of the frontend code when making changes.
 
