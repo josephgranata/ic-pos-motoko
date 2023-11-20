@@ -158,12 +158,12 @@ I signed up for Courier, and got their production API key for free up to 10,000 
 I used the Gmail account from satoshinotesbtc@gmail.com to do it, and connected it fully. 
 It worked.
 
-Here is the key: YzVjNDA2NTYtZDgwZi00MDA3LTlhMjEtMWU5YzY4MDYzZTk2
+Get your key, and use it with your Gmail account it will look like this: ABCDNDA2NTYtZ111321MDA3LTlhMjEtMWU5YzY4MDYzQWE1
 
 ```bash
 dfx canister --network local call icpos setCourierApiKey "pk_prod_..."
 ```
-dfx canister --network local call icpos setCourierApiKey "YzVjNDA2NTYtZDgwZi00MDA3LTlhMjEtMWU5YzY4MDYzZTk2"
+dfx canister --network local call icpos setCourierApiKey "ABCDNDA2NTYtZ111321MDA3LTlhMjEtMWU5YzY4MDYzQWE1"
 
 
 ### Step 7: Build and run the frontend
